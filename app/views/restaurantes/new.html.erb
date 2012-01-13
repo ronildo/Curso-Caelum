@@ -1,0 +1,23 @@
+
+<% if @restaurante.errors.any? %>
+<!-- Message Error -->
+<div class="msg msg-form">
+	<div>
+		<ul>
+			<% @restaurante.errors.each do |campo, msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<!-- End Message Error -->
+<% end %>
+
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	<div class="box-head"><h2>Adicionando um novo restaurante</h2></div>
+	<!-- End Box Head -->
+	<%= render :partial => "form", :locals => { :action =>  "create", :button => "Criar" } %>
+</div>
+<!-- End Box -->

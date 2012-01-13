@@ -1,0 +1,21 @@
+<% form_for :restaurante, :url => { :action => action, :id => @restaurante } do |f| %>
+	<div class="form">
+		<p>
+			<%= f.label :nome %>
+			<%= f.text_field :nome, :class => "field size1" %>
+		</p>
+		<p>
+			<%= f.label :endereco %>
+			<%= f.text_field :endereco, :class => "field size1" %>
+		</p>
+		<p>
+			<%= f.label :especialidade %>
+			<%= f.text_field :especialidade, :class => "field size1" %>
+		</p>
+		<!-- Form Buttons -->
+			<div class="buttons">
+				<%= submit_tag button, :class => "button" %>
+			</div>
+		<!-- End Form Buttons -->
+	</div>
+<% end %>

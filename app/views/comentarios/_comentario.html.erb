@@ -1,0 +1,12 @@
+<p id="comentario_<%= comentario.id %>">
+	<%= comentario.conteudo %>
+	<a href="javascript:void(0)" onClick="remove_comentario_<%= comentario.id %>()">Remover</a>
+</p>
+
+<%= content_for :js do %>
+	function remove_comentario_<%= comentario.id %>(){
+		$.get("<%= remover_comentario_path(comentario) %>", function(){
+			$("#comentario_<%= comentario.id %>").remove();
+		})
+	};
+<% end %>

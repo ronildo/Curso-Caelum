@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VotaPrato</title>
+  <%= stylesheet_link_tag :all, "fancybox/jquery.fancybox-1.3.4" %>
+	<%= stylesheet_link_tag "fancybox/jquery.fancybox-1.3.4" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div class="all">
+	<!-- Header -->
+	<div id="header">
+		<div class="shell">
+			<!-- Logo + Top Nav -->
+			<div id="top">
+				<h1><a href="/">Sistema de Restaurantes da Caelum</a></h1>
+				<div id="top-navigation">
+					Welcome <a href="#"><strong>Administrator</strong></a>
+					<span>|</span>
+					<a href="#">Help</a>
+					<span>|</span>
+					<a href="#">Profile Settings</a>
+					<span>|</span>
+					<a href="#">Log out</a>
+				</div>
+			</div>
+			<!-- End Logo + Top Nav -->
+		
+			<!-- Main Nav -->
+			<div id="navigation">
+				<ul>
+				  <li><%= link_to content_tag(:span, "Restaurantes"), restaurantes_path %></li>
+				  <li><%= link_to content_tag(:span, "Clientes"), :controller => "clientes" %></li>
+				  <li><%= link_to content_tag(:span, "Qualificações"), :controller => "qualificacoes" %></li>
+				</ul>
+			</div>
+			<!-- End Main Nav -->
+		</div>
+	</div>
+	<!-- End Header -->
+
+	<!-- Container -->
+	<div id="container">
+		<div class="shell">
+		
+			<!-- Small Nav -->
+			<div class="small-nav">
+				<a href="#">Dashboard</a>
+				<span>&gt;</span>
+				Todos Restaurantes
+			</div>
+			<!-- End Small Nav -->
+
+			<!-- Main -->
+			<div id="main">
+				<div class="cl">&nbsp;</div>
+				<!-- Content -->
+				<div id="content">
+					<%= yield %>	
+				</div>
+				<!-- End Content -->
+			
+
+			
+				<div class="cl">&nbsp;</div>			
+			</div>
+			<!-- Main -->
+		</div>
+	</div>
+	<!-- End Container -->
+
+	<!-- Footer -->
+	<div id="footer">
+		<div class="shell">
+			<span class="left">&copy; 2010 - CompanyName</span>
+			<span class="right">
+				Design by <a href="http://chocotemplates.com" target="_blank" title="The Sweetest CSS Templates WorldWide">Chocotemplates.com</a>
+			</span>
+		</div>
+	</div>
+	<!-- End Footer -->
+
+</div>
+<!-- End All -->
+
+<%= javascript_include_tag "jquery", "fancybox/jquery.easing-1.3.pack", "fancybox/jquery.fancybox-1.3.4", "fancybox/jquery.fancybox-1.3.4.pack", "application" %>
+<script text="text/javascript">
+	<%= yield :js %>
+</script>
+
+</body>
+</html>

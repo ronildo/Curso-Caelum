@@ -1,0 +1,26 @@
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	
+	<div class="box-head">
+		<h2><%= flash[:notice] ? flash[:notice] : "Restaurante: #{@restaurante.nome}"; %></h2>
+	</div>
+	<!-- End Box Head -->
+
+	<div class="afastar">
+		<h4>Nome do restaurante: <b><%= @restaurante.nome %></b></h3>
+		<br />
+		<h4>Endereço do restaurante: <b><%= @restaurante.endereco %></b></h3>
+		<br />
+		<h4>Especialidae do restaurante: <b><%= @restaurante.especialidade %></b></h3>
+	</div>
+
+</div>
+<!-- End Box -->
+
+
+<% unless @restaurante.comentarios.empty? %>
+	<%= comentarios @restaurante %>
+<% end %>
+
+<%= novo_comentario(@restaurante) %>

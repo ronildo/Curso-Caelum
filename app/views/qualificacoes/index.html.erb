@@ -1,0 +1,55 @@
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	<div class="box-head">
+		<h2 class="left">Qualificações Cadastradas</h2>
+		<div class="right">
+			<label>Procurar Qualificações</label>
+			<input type="text" class="field small-field" />
+			<input type="submit" class="button" value="search" />
+		</div>
+	</div>
+	<!-- End Box Head -->	
+
+	<!-- Table -->
+	<div class="table">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<th width="13"><input type="checkbox" class="checkbox" /></th>
+				<th width="200">Cliente</th>
+				<th>Restaurante</th>
+				<th>Nota</th>
+				<th>Valor gasto</th>
+				<th width="160" class="ac">Ações</th>
+			</tr>
+			<% @qualificacoes.each do |qualificacao| %>
+				<tr class='link <%= cycle("odd", "even") %>'>
+					<td><input type="checkbox" class="checkbox" /></td>
+					<td><h3><%= qualificacao.cliente.nome %></h3></td>
+					<td><%= qualificacao.restaurante.nome %></td>
+					<td><%= qualificacao.nota %></td>
+					<td><%= qualificacao.valor_gasto %></td>
+					<td class="acoes">
+							<%= link_to 'Edit', edit_qualificacao_path(qualificacao), :class => "ico edit" %>
+							<%= link_to 'Show', qualificacao, :class => "ico hide link" %>
+							<%= link_to 'Destroy', qualificacao, :confirm => 'Are you sure?', :method => :delete, :class => "ico del" %>
+
+					</td>
+				</tr>
+			<% end %>
+		</table>
+
+		<br clear="all" />
+		<%= link_to content_tag(:span, "Criar nova Qualificação"), new_qualificacao_path, :class => "add-button" %>
+		<br clear="all" />
+
+		<!-- Pagging -->
+		<div class="pagging">
+			<div class="left"><%= page_entries_info @qualificacoes %></div>
+			<div class="right"><%= will_paginate @qualificacoes %></div>
+		</div>
+		<!-- End Pagging -->
+	</div>
+	<!-- Table -->
+</div>
+<!-- End Box -->

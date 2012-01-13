@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nota: 1.5
+  valor_gasto: 1.5
+
+two:
+  nota: 1.5
+  valor_gasto: 1.5

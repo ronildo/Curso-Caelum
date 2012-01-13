@@ -1,0 +1,56 @@
+
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	<div class="box-head">
+		<h2 class="left">Restaurantes Cadastrados</h2>
+		<div class="right">
+			<label>Procurar Restaurantes</label>
+			<input type="text" class="field small-field" />
+			<input type="submit" class="button" value="search" />
+		</div>
+	</div>
+	<!-- End Box Head -->	
+
+	<!-- Table -->
+	<div class="table">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<th width="13"><input type="checkbox" class="checkbox" /></th>
+				<th width="200">Nome</th>
+				<th>Data</th>
+				<th>Especialidade</th>
+				<th width="160" class="ac">Ações</th>
+			</tr>
+			<% @restaurantes.each do |restaurante| %>
+				<tr class='link <%= cycle("odd", "even") %>'>
+					<td><input type="checkbox" class="checkbox" /></td>
+					<td><h3><%= link_to restaurante.nome, restaurante_path(restaurante), :class => "link" %></h3></td>
+					<td><%= formata_data(restaurante.created_at) %></td>
+					<td><%= restaurante.especialidade %></td>
+					<td class="acoes">
+
+			<%= link_to "Ver comentários", restaurante_path(restaurante), :class => "ico comment", :id => "iframe" %>
+			<%= link_to "Editar", edit_restaurante_path(restaurante), :class => "ico edit" %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+
+		<br clear="all" />
+		<%= link_to content_tag(:span, "Criar novo restaurante"), { :action => "new" }, :class => "add-button" %>
+		<br clear="all" />
+
+		<!-- Pagging -->
+		<div class="pagging">
+			<div class="left"><%= page_entries_info @restauranetes %></div>
+			<div class="right"><%= will_paginate @restauranetes %></div>
+		</div>
+		<!-- End Pagging -->
+		
+	</div>
+	<!-- Table -->
+
+	
+</div>
+<!-- End Box -->

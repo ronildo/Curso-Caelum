@@ -1,0 +1,2 @@
+<% form_for :restaurante, :url => { :action => "update", :id => @restaurante } do |f| %>
+<% form_for :restaurante, :url => { :action => "create" } do |f| %>

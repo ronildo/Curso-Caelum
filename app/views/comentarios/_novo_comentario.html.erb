@@ -1,0 +1,30 @@
+<div id="novo_comentario">
+	<a href="javascript:void(0)" id="mostra_form">Novo Comentário</a>
+	<div id="form_comentario" style="display:none">
+		<%= form_for Comentario.new, :remote => true do |f| %>
+			<%= hidden_field :comentario, :comentavel_id, :value => comentavel.id %>
+			<%= hidden_field :comentario, :comentavel_type, :value => comentavel.class %>
+			<div class="field">
+				<%= f.label "conteudo" %>
+				<%= f.text_area "conteudo" %>
+			</div>
+			<div class="actions">
+				<%= f.submit %>
+				<a href="javascript:void(0)" id="esconde_form" >Cancelar</a>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+<%= content_for :js do %>
+	$("#mostra_form, #esconde_form").click(function() {
+		$('#form_comentario').toggle('slow');
+	});
+	$("#form_comentario").bind("ajax:complete", function(xhr, result){
+		$("#comenarios").html(result.responseText);
+		$("#form_comentario textarea").val("");
+		$("#form_comentario").hide();
+		$("#novo_comentario > a").show();
+	});
+<% end %>

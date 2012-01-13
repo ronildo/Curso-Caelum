@@ -1,0 +1,21 @@
+<% if @restaurante.errors.any? %>
+	<ul>
+		<% @restaurante.errors.each do |campo, msg| %>
+			<li><%= campo %> - <%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<!-- Box -->
+<div class="box">
+	<!-- Box Head -->
+	<div class="box-head"><h2>Editando o Restaurante - <%= @restaurante.nome %></h2></div>
+	<!-- End Box Head -->
+	<%= render :partial => "form", :locals => { :action =>  "edit", :button => "Atualizar" } %>
+
+	<br clear="all" />	
+	<%= link_to content_tag(:span, "Voltar"), {:action => "index"}, :class => "add-button" %>
+	<br clear="all" />
+	<br clear="all" />
+</div>
+<!-- End Box -->
